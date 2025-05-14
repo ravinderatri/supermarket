@@ -1,0 +1,7 @@
+# Ignore environment files
+env
+ 
+**/migrations/*.py
+**/migrations/*.pyc
+ 
+!**/migrations/__init__.py

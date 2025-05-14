@@ -1,0 +1,47 @@
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Checkout Summary</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light py-5">
+<div class="container">
+    <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Checkout Summary</h4>
+        </div>
+        <div class="card-body">
+
+            {% if items %}
+                <p class="mb-2"><strong>Items:</strong> {{ items }}</p>
+                <p class="h5"><strong>Total:</strong> ₹{{ total }}</p>
+            {% else %}
+                <p class="text-muted">No items processed.</p>
+            {% endif %}
+
+            {% if errors %}
+                <div class="alert alert-danger mt-4">
+                    <h6 class="alert-heading">
+    {% if errors|length > 1 %}
+        Errors:
+    {% else %}
+        Error:
+    {% endif %}
+</h6>
+
+                    <ul class="mb-0">
+                        {% for error in errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            <a href="{% url 'checkout' %}" class="btn btn-secondary mt-3">Back to Checkout</a>
+        </div>
+    </div>
+</div>
+</body>
+</html>
